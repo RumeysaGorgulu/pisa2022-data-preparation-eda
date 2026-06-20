@@ -128,4 +128,8 @@ country_summary <- imputed_variables %>%
   )
 
 correlation <- cor(imputed_variables[, c("ESCS", "MATHH", "READD", "SCIEE")])
+
+
+#Saving the changes
+saveRDS(imputed_variables, "imputed_variables.rds")
 print(correlation)
