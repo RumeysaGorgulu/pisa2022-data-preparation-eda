@@ -1,22 +1,19 @@
-# =============================================================================
 # Examining Socio-Economic Disparities in Math, Reading, and Science Skills
 # An International Comparison using PISA 2022 Dataset
-# =============================================================================
+
 # The Programme for International Student Assessment (PISA) is an international
 # study conducted by the OECD that evaluates education systems worldwide by
 # testing 15-year-old students in reading, mathematics, and science every four
 # years. This project analyzes the relationship between socioeconomic status
 # (SES) and academic performance using the PISA 2022 dataset
 # (N = 613,744 students across 80 countries).
-# =============================================================================
+
 
 library(haven)
 library(stringr)
 library(tidyverse)
 
-# -----------------------------------------------------------------------------
 # 1. Data Preprocessing
-# -----------------------------------------------------------------------------
 
 # 1.1 Dataset Preparation
 # The PISA 2022 Student Questionnaire was downloaded as a single SPSS file
@@ -31,14 +28,12 @@ message("Finished reading: ", Sys.time())
 saveRDS(pisa, "pisa2022sq.rds")
 pisa <- readRDS("pisa2022sq.rds")
 
-# -----------------------------------------------------------------------------
 # 1.2 Variables Preparation
 # ESCS (Index of Economic, Social, and Cultural Status) represents students'
 # socioeconomic status, derived from 42 survey questions. Academic scores were
 # computed by averaging ten plausible values (PV1-PV10) for each subject.
 # A subset was created containing ESCS, averaged scores, 42 SES survey items,
 # and country/student identifiers.
-# -----------------------------------------------------------------------------
 
 # Compute mean scores across 10 plausible values
 pisa$MATHH <- rowMeans(pisa[, paste0("PV", 1:10, "MATH")])
@@ -108,12 +103,10 @@ imputed_variables <- filtered_variables %>%
 
 sum(is.na(imputed_variables))
 
-# -----------------------------------------------------------------------------
 # 2. Exploratory Data Analysis (EDA)
 # Summary statistics (min, Q1, median, mean, Q3, max, SD) were calculated for
 # ESCS, math, reading, and science scores across all 79 countries.
 # Correlation between key variables was also examined.
-# -----------------------------------------------------------------------------
 
 country_summary <- imputed_variables %>%
   group_by(CNT) %>%
