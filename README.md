@@ -1,4 +1,4 @@
-# PISA 2022 — Data Preparation & EDA
+# PISA 2022 Data Preparation & EDA
 
 Data preprocessing and exploratory analysis of the PISA 2022 Student Questionnaire dataset using R.
 
